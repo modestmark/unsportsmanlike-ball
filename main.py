@@ -64,7 +64,7 @@ while 1:
         ball.speedz = -(ball.speedz + 3)
 
 
-    if ball.rect.colliderect(bird) == 1:
+    if ball.rect.colliderect(bird.hitbox) == 1:
         ball.contact(bird.rect.centerx, bird.rect.centery, ball.rect.centerx, ball.rect.centery)
 
    # print(bird.speedx, bird.speedz)
