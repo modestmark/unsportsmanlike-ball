@@ -60,9 +60,9 @@ while 1:
 
 
 #Advanced Gravity Simulation
-    if speedz < 7:
+    if speedz < 1:
 
-        speedz = speedz + 1
+        speedz = speedz + 20
 
 
 
