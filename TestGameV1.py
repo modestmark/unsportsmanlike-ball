@@ -1,3 +1,4 @@
+#!/bin/python3
 #This is the initial framework code for a sportsball like game
 
 import sys, pygame
