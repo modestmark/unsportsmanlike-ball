@@ -6,6 +6,6 @@ import pygame
 class Bird(pygame.sprite.Sprite) :
     def __init__(self) :
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("bird.jpg")
+        self.image = pygame.image.load("bird_small.png")
         self.rect = self.image.get_rect()
 		
