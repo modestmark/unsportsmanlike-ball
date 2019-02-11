@@ -28,7 +28,7 @@ class Bird(pygame.sprite.Sprite) :
             self.speedz += z
 
     def update(self) :
-        if self.speedz < 7 :
+        if self.speedz < 7:
             self.speedz += 1
 
         self.rect = self.rect.move(self.speedx, self.speedz)
