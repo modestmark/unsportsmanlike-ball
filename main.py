@@ -55,15 +55,17 @@ while 1:
         bird.speedz = -2
 
     if ball.rect.left < 0:
-        ball.speedx = -(ball.speedx + 1)
+        ball.speedx = -(ball.speedx + 3)
     if ball.rect.right > width:
-        ball.speedx = -(ball.speedx + 1)
+        ball.speedx = -(ball.speedx + 3)
     if ball.rect.top < 0:
-        ball.speedz = -(ball.speedz + 1)
+        ball.speedz = -(ball.speedz + 3)
     if ball.rect.bottom > height:
-        ball.speedz = -(ball.speedz + 1)
+        ball.speedz = -(ball.speedz + 3)
 
 
+    if ball.rect.colliderect(bird) == 1:
+        ball.contact(bird.rect.centerx, bird.rect.centery, ball.rect.centerx, ball.rect.centery)
 
    # print(bird.speedx, bird.speedz)
     screen.fill(black)
