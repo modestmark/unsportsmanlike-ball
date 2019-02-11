@@ -45,13 +45,13 @@ while 1:
 
 #Bounding
 
-    if bird.rect.left < 0:
+    if bird.hitbox.left < 0:
         bird.speedx = +2
-    if bird.rect.right > width:
+    if bird.hitbox.right > width:
         bird.speedx = -2
-    if bird.rect.top < 0:
+    if bird.hitbox.top < 0:
         bird.speedz = +2
-    if (bird.rect.bottom > height) and (bird.speedz > 0):
+    if (bird.hitbox.bottom > height) and (bird.speedz > 0):
         bird.speedz = -2
 
     if ball.rect.left < 0:

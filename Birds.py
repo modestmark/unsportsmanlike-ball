@@ -12,6 +12,8 @@ class Bird(pygame.sprite.Sprite) :
         self.imageFacing['right'] = pygame.transform.flip(self.imageFacing['left'], 1, 0)
         self.image = self.imageFacing['right']
         self.rect = self.image.get_rect()
+        self.hitbox = self.rect.inflate(-40, -40)
+        self.hitbox.center = self.rect.center
         self.speedx = 0
         self.speedz = 0
 
@@ -32,5 +34,6 @@ class Bird(pygame.sprite.Sprite) :
             self.speedz += 1
 
         self.rect = self.rect.move(self.speedx, self.speedz)
+        self.hitbox = self.hitbox.move(self.speedx, self.speedz)
 
 		
