@@ -3,6 +3,7 @@
 
 import sys, pygame
 from Birds import Bird
+from Ball import Ball
 
 
 
@@ -15,12 +16,11 @@ keys=pygame.key.get_pressed()
 size = width, height = 600, 400
 
 
-black = 0, 0, 0
+black = 244, 244 ,244
 
 screen = pygame.display.set_mode(size)
-ball = pygame.image.load("BirdDemo4.png")
-ballrect = ball.get_rect()
 bird = Bird()
+ball = Ball()
 
 #This is the main loop
 
@@ -52,13 +52,24 @@ while 1:
     if bird.rect.top < 0:
         bird.speedz = +2
     if bird.rect.bottom > height:
-        bird.speedz = -1
+        bird.speedz = -2
+
+    if ball.rect.left < 0:
+        ball.speedx = -(ball.speedx + 1)
+    if ball.rect.right > width:
+        ball.speedx = -(ball.speedx + 1)
+    if ball.rect.top < 0:
+        ball.speedz = -(ball.speedz + 1)
+    if ball.rect.bottom > height:
+        ball.speedz = -(ball.speedz + 1)
 
 
 
-    print(bird.speedx, bird.speedz)
+   # print(bird.speedx, bird.speedz)
     screen.fill(black)
-#    screen.blit(ball, ballrect)
+
     bird.update()
+    ball.update()
     screen.blit(bird.image, bird.rect)
+    screen.blit(ball.image, ball.rect)
     pygame.display.flip()
