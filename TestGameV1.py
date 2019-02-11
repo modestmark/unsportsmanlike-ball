@@ -2,8 +2,13 @@
 #This is the initial framework code for a sportsball like game
 
 import sys, pygame
+
+
+
+
 pygame.init()
 
+clockobject = pygame.time.Clock()
 keys=pygame.key.get_pressed()
 
 size = width, height = 600, 400
@@ -23,6 +28,8 @@ ballrect = ball.get_rect()
 
 #Primary input and draw loop
 while 1:
+
+    clockobject.tick(60)
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
     events = pygame.event.get()
@@ -34,11 +41,17 @@ while 1:
                 speedx = -1
             if event.key == pygame.K_RIGHT:
                 speedx =  1
+            if event.key == pygame.K_UP:
+                speedz = 1
+            if event.key == pygame.K_DOWN:
+                speedz =  -1
 
     if ballrect.left < 0 or ballrect.right > width:
-        speedx = speedx-1
+        speedx = -speedx
     if ballrect.top < 0 or ballrect.bottom > height:
-        speedy = -speedy
+        speedz = -speedz
+
+
 
     screen.fill(black)
     screen.blit(ball, ballrect)
