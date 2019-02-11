@@ -25,9 +25,7 @@ screen = pygame.display.set_mode(size)
 ball = pygame.image.load("intro_ball.gif")
 ballrect = ball.get_rect()
 
-clockobject.tick(60)
-#This is the main loop
-
+#Primary input and draw loop
 while 1:
 
     clockobject.tick(60)
