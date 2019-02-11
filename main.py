@@ -18,8 +18,6 @@ size = width, height = 600, 400
 black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
-ball = pygame.image.load("BirdDemo4.png")
-ballrect = ball.get_rect()
 bird = Bird()
 
 #This is the main loop
@@ -38,7 +36,7 @@ while 1:
             if event.key == pygame.K_RIGHT :
                 bird.control(1, 0)
             if event.key == pygame.K_UP :
-                bird.control(0, -3)
+                bird.control(0, -5)
             if event.key == pygame.K_DOWN :
                 bird.control(0, 1)
 
@@ -51,8 +49,8 @@ while 1:
         bird.speedx = -2
     if bird.rect.top < 0:
         bird.speedz = +2
-    if bird.rect.bottom > height:
-        bird.speedz = -1
+    if (bird.rect.bottom > height) and (bird.speedz > 0):
+        bird.speedz = -2
 
 
 
