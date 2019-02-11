@@ -1,6 +1,9 @@
+#!/bin/python3
 #This is the initial framework code for a sportsball like game
 
 import sys, pygame
+from Birds import Bird
+
 
 
 
@@ -11,64 +14,51 @@ keys=pygame.key.get_pressed()
 
 size = width, height = 600, 400
 
-speedx = 0
-speedz = 0
-
-float (speedx)
-float (speedz)
-
 
 black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 ball = pygame.image.load("BirdDemo4.png")
 ballrect = ball.get_rect()
+bird = Bird()
 
 #This is the main loop
 
 while 1:
 
-#Sets framerate to 30 FPS to keep it from moving super fast
     clockobject.tick(30)
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
-
     events = pygame.event.get()
     
-    ballrect = ballrect.move(speedx, speedz)
 
-#Fetches Key presses
     if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT and speedx > -7:
-                speedx = speedx -1
-            if event.key == pygame.K_RIGHT and speedx < 7:
-                speedx = speedx + 1
-            if event.key == pygame.K_UP and speedz >  -6:
-                speedz = speedz - 3
-            if event.key == pygame.K_DOWN:
-                speedz = speedz + 1
+            if event.key == pygame.K_LEFT :
+                bird.control(-1, 0)
+            if event.key == pygame.K_RIGHT :
+                bird.control(1, 0)
+            if event.key == pygame.K_UP :
+                bird.control(0, -3)
+            if event.key == pygame.K_DOWN :
+                bird.control(0, 1)
 
 
-#BoundingBox
+#Bounding
 
-    if ballrect.left < 0:
-        speedx = +2
-    if ballrect.right > width:
-        speedx = -2
-    if ballrect.top < 0:
-        speedz = +2
-    if ballrect.bottom > height:
-        speedz = -2
-
-
-#Advanced Gravity Simulation
-    if speedz < 1:
-
-        speedz = speedz + 20
+    if bird.rect.left < 0:
+        bird.speedx = +2
+    if bird.rect.right > width:
+        bird.speedx = -2
+    if bird.rect.top < 0:
+        bird.speedz = +2
+    if bird.rect.bottom > height:
+        bird.speedz = -1
 
 
 
-#Draw the pretty pictures
+    print(bird.speedx, bird.speedz)
     screen.fill(black)
-    screen.blit(ball, ballrect)
+#    screen.blit(ball, ballrect)
+    bird.update()
+    screen.blit(bird.image, bird.rect)
     pygame.display.flip()

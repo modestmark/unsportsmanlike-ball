@@ -9,12 +9,23 @@ class Bird(pygame.sprite.Sprite) :
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("bird_small.png")
         self.rect = self.image.get_rect()
+        self.speedx = 0
+        self.speedz = 0
 
     def control(self, x, z) :
-        self.movex += x
-        self.movez += z
+        if (self.speedx < 7) and (x > 0) : 
+            self.speedx += x
+        elif (self.speedx > -7) and (x < 0) : 
+            self.speedx += x
+        if (self.speedz < 7) and (z > 0) : 
+            self.speedz += z
+        elif (self.speedz > -7) and (z < 0) : 
+            self.speedz += z
 
     def update(self) :
-        self.rect.x = self.rect.x + self.movex
-        self.rect.z = self.rect.z + self.movez
+        if self.speedz < 7 :
+            self.speedz += 1
+
+        self.rect = self.rect.move(self.speedx, self.speedz)
+
 		
