@@ -1,8 +1,6 @@
-#!/bin/python3
 #This is the initial framework code for a sportsball like game
 
 import sys, pygame
-
 
 
 
@@ -30,13 +28,16 @@ ballrect = ball.get_rect()
 
 while 1:
 
+#Sets framerate to 30 FPS to keep it from moving super fast
     clockobject.tick(30)
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
+
     events = pygame.event.get()
     
     ballrect = ballrect.move(speedx, speedz)
 
+#Fetches Key presses
     if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT and speedx > -7:
                 speedx = speedx -1
@@ -48,7 +49,7 @@ while 1:
                 speedz = speedz + 1
 
 
-#Bounding
+#BoundingBox
 
     if ballrect.left < 0:
         speedx = +2
@@ -61,13 +62,13 @@ while 1:
 
 
 #Advanced Gravity Simulation
-    if speedz < 7:
+    if speedz < 1:
 
-        speedz = speedz + 1
-
-
+        speedz = speedz + 20
 
 
+
+#Draw the pretty pictures
     screen.fill(black)
     screen.blit(ball, ballrect)
     pygame.display.flip()
