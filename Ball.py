@@ -25,6 +25,6 @@ class Ball(pygame.sprite.Sprite) :
             pushx = (ballx - birdx)
             pushz = (ballz - birdz)
 
-            self.speedx = pushx + speed
-            self.speedz = pushz + speed
+            self.speedx = pushx
+            self.speedz = pushz
 

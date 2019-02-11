@@ -13,12 +13,15 @@ pygame.init()
 clockobject = pygame.time.Clock()
 keys=pygame.key.get_pressed()
 
-size = width, height = 600, 400
+size = width, height = 1080, 720
 
 
-black = 244, 244 ,244
 
 screen = pygame.display.set_mode(size)
+
+background_image = pygame.image.load("Background1.png")
+screen.blit(background_image, [0, 0])
+
 bird = Bird()
 ball = Ball()
 
@@ -68,7 +71,7 @@ while 1:
         ball.contact(bird.rect.centerx, bird.rect.centery, ball.rect.centerx, ball.rect.centery)
 
    # print(bird.speedx, bird.speedz)
-    screen.fill(black)
+    screen.blit(background_image, [0, 0])
 
     bird.update()
     ball.update()
